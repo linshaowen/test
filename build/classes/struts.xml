@@ -1,0 +1,32 @@
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <!-- Configuration for the default package. -->
+    <constant name="struts.custom.i18n.resources" value="globalMessages" /> 
+    <constant name="struts.i18n.encoding" value="utf-8" /> 
+       <constant name="struts.action.extension" value="action" /> 
+    <package name="I18N" extends="struts-default">
+        <action name="upLoad" class="fileUp.UploadAction">
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">10000000</param>
+                <param name="allowedExtensions">  
+                       xls  
+                 </param> 
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+            <param name="savePath">/save</param>
+            <result name="input">/fileUpDown/fileUp.jsp</result> 
+            <result type='redirect' name="success">/upSuccess.html</result> 
+        </action>
+        <action name="upLoad2" class="fileUp.Upload2Action">
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">10000000</param>
+             <param name="allowedExtensions">  
+                      jpg
+                 </param> 
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack" />
+            <param name="savePath">/save</param>
+            <result type='redirect' name="success">/upSuccess.html</result> 
+        </action>
+    </package>
+</struts>
